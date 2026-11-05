@@ -1,0 +1,155 @@
+/* ==========================================================================
+   Page container and site header
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: 1332px;
+  margin: 0 auto;
+  padding-inline: 16px;
+}
+
+.site-header {
+  position: relative;
+  z-index: 20;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-block: 22px;
+}
+
+.logo-tile {
+  display: flex;
+  align-items: center;
+  background: var(--cream);
+  border: 1.5px solid var(--line);
+  border-radius: 16px;
+  padding: 8px 14px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.logo-tile:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(124, 58, 237, 0.12);
+}
+
+.logo-tile img {
+  display: block;
+  height: 40px;
+  width: auto;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2.4vw, 28px);
+}
+
+.nav-link {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 6px 2px;
+  transition: color 0.18s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent-text);
+}
+
+.nav-extra {
+  display: none;
+}
+
+@media (min-width: 760px) {
+  .nav-extra {
+    display: inline;
+  }
+}
+
+.lang-switch {
+  display: flex;
+  border: 2px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 2px;
+}
+
+.lang-btn {
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.lang-btn.active {
+  background: var(--btn-ink-bg);
+  color: var(--btn-ink-text);
+}
+
+.lang-btn:not(.active):hover {
+  background: var(--field);
+}
+
+@media (max-width: 420px) {
+  .logo-tile img {
+    height: 34px;
+  }
+
+  .lang-btn {
+    padding: 5px 11px;
+  }
+}
+
+/* ---------- Theme toggle (sun / moon) ---------- */
+.theme-toggle {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 2px solid var(--line-strong);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: background-color 0.18s ease, transform 0.18s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--field);
+  transform: rotate(-12deg);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-toggle:focus-visible {
+  border-radius: 50%;
+}
+
+@media (max-width: 420px) {
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+  }
+}

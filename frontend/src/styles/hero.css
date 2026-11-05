@@ -1,0 +1,470 @@
+/* ==========================================================================
+   Home hero: glows, two-tone headline, animated phone, split call to action
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  overflow-x: clip;
+  margin-top: -88px;
+  padding-top: 88px;
+}
+
+.hero-glow {
+  position: absolute;
+  z-index: 0;
+  width: 700px;
+  height: 620px;
+  border-radius: 50%;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.hero-glow.g1 {
+  left: -18%;
+  top: 380px;
+  background: radial-gradient(circle, var(--violet), rgba(124, 58, 237, 0) 68%);
+  opacity: calc(0.4 * var(--glow-boost));
+  animation: heroDrift1 12s ease-in-out infinite alternate;
+}
+
+.hero-glow.g2 {
+  right: -18%;
+  top: 410px;
+  background: radial-gradient(circle, var(--pink), rgba(233, 71, 154, 0) 68%);
+  opacity: calc(0.38 * var(--glow-boost));
+  animation: heroDrift2 14s ease-in-out infinite alternate;
+}
+
+/* Very light grain over the glows */
+.hero-grain {
+  position: absolute;
+  inset: var(--grain-top) 0 0 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: var(--grain-blend);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  position: relative;
+  z-index: 5;
+  margin-top: 30px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(46px, 10.5vw, 136px);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+.hero-title .grad-text {
+  padding-right: 0.08em;
+}
+
+.hero-sub {
+  position: relative;
+  z-index: 5;
+  max-width: 900px;
+  margin: 22px auto 0;
+  text-align: center;
+  font-size: clamp(16px, 2vw, 22px);
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* ---------- Stage with the phone ---------- */
+.hero-stage {
+  position: relative;
+  z-index: 4;
+  height: 520px;
+  margin-top: 10px;
+}
+
+.hero-star {
+  position: absolute;
+  z-index: 6;
+  animation: heroSpin 8s linear infinite;
+}
+
+.hero-star.s1 {
+  left: 6%;
+  top: 90px;
+  width: 64px;
+  height: 64px;
+  fill: var(--lilac);
+}
+
+.hero-star.s2 {
+  right: 6%;
+  top: 50px;
+  width: 78px;
+  height: 78px;
+  fill: var(--pink);
+  animation-direction: reverse;
+}
+
+.hero-chip {
+  position: absolute;
+  z-index: 6;
+  background: var(--surface);
+  border-radius: 22px;
+  padding: 14px 18px;
+  box-shadow: var(--chip-shadow);
+  font-weight: 700;
+  font-size: 16px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(20px) rotate(var(--r)) scale(0.9);
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
+.hero-chip small {
+  display: block;
+  margin-bottom: 2px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.hero-chip.show {
+  opacity: 1;
+  transform: translateY(0) rotate(var(--r)) scale(1);
+}
+
+.hero-chip.c1 {
+  --r: -5deg;
+  left: max(2%, calc(50% - 560px));
+  top: 200px;
+}
+
+.hero-chip.c2 {
+  --r: 4deg;
+  right: max(2%, calc(50% - 570px));
+  top: 150px;
+}
+
+.hero-chip.c3 {
+  --r: 3deg;
+  left: max(4%, calc(50% - 480px));
+  top: 400px;
+}
+
+@media (max-width: 900px) {
+  .hero-chip {
+    display: none;
+  }
+}
+
+.phone {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  width: 300px;
+  height: 560px;
+  margin-left: -150px;
+  padding: 16px;
+  border-radius: 46px;
+  background: var(--ink);
+  border: 3px solid var(--phone-border);
+  box-shadow: var(--phone-ring), 0 40px 80px rgba(124, 58, 237, 0.33);
+  transform: rotate(-6deg);
+  animation: heroFloat 5s ease-in-out infinite;
+}
+
+.phone-screen {
+  --text: var(--ink);
+  --muted: var(--muted-day);
+  --muted-light: var(--muted-light-day);
+  --line: var(--line-day);
+  color: var(--text);
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  padding: 22px 18px;
+  border-radius: 32px;
+  background: var(--cream);
+}
+
+.phone-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 19px;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.phone-hint {
+  margin: 3px 0 8px;
+  font-size: 11.5px;
+  color: var(--muted);
+}
+
+.phone-task {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  border-top: 1.5px solid var(--line);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--muted-light);
+  transition: color 0.3s ease;
+}
+
+.phone-task i {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 7px;
+  border: 2px solid var(--ink);
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.phone-task svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: var(--white);
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 18;
+  stroke-dashoffset: 18;
+  transition: stroke-dashoffset 0.3s ease 0.1s;
+}
+
+.phone-task em {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-style: normal;
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.phone-task.on {
+  color: var(--ink);
+}
+
+.phone-task.on i {
+  background: var(--violet);
+  border-color: var(--violet);
+  transform: scale(1.12);
+}
+
+.phone-task.on svg {
+  stroke-dashoffset: 0;
+}
+
+.phone-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: var(--ink);
+  color: var(--white);
+  font-size: 14px;
+}
+
+.phone-total small {
+  display: block;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 10px;
+  color: var(--lilac);
+}
+
+.phone-total b {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 26px;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.phone-send {
+  position: relative;
+  overflow: hidden;
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 999px;
+  background: var(--grad);
+  color: var(--white);
+  text-align: center;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.phone-send.pulse {
+  animation: heroPulse 0.9s ease-out 2;
+}
+
+.phone-send .label-a,
+.phone-send .label-b {
+  display: block;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.phone-send .label-b {
+  position: absolute;
+  inset: 0;
+  padding: 12px;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.phone-send.sent .label-a {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.phone-send.sent .label-b {
+  transform: none;
+  opacity: 1;
+}
+
+/* ---------- Split call to action at the bottom of the hero ---------- */
+.hero-cta {
+  position: relative;
+  z-index: 7;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: -20px;
+  border-radius: 26px 26px 0 0;
+  overflow: hidden;
+}
+
+.hero-cta button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 84px;
+  padding: 12px 16px;
+  border: 0;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+.hero-cta button:hover {
+  filter: brightness(1.08);
+}
+
+.hero-cta button:focus-visible {
+  outline: 3px solid var(--white);
+  outline-offset: -6px;
+  border-radius: 20px;
+}
+
+.hero-cta-quote {
+  background: var(--grad);
+}
+
+.hero-cta-services {
+  background: var(--cta-dark-bg);
+  box-shadow: inset 0 0 0 1.5px var(--total-ring);
+}
+
+@media (max-width: 560px) {
+  .hero-stage {
+    height: 540px;
+  }
+
+  .hero-star {
+    z-index: 3;
+  }
+
+  .hero-star.s1 {
+    left: 2%;
+    top: 20px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero-star.s2 {
+    right: 2%;
+    top: 60px;
+    width: 46px;
+    height: 46px;
+  }
+
+  .hero-cta button {
+    min-height: 68px;
+    font-size: 15px;
+  }
+}
+
+@keyframes heroFloat {
+  0%,
+  100% {
+    transform: rotate(-6deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-4deg) translateY(-16px);
+  }
+}
+
+@keyframes heroPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(233, 71, 154, 0.67);
+  }
+  100% {
+    box-shadow: 0 0 0 22px rgba(233, 71, 154, 0);
+  }
+}
+
+@keyframes heroDrift1 {
+  to {
+    transform: translate(60px, -30px);
+  }
+}
+
+@keyframes heroDrift2 {
+  to {
+    transform: translate(-60px, 30px);
+  }
+}
+
+@keyframes heroSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow,
+  .hero-star,
+  .phone,
+  .phone-send.pulse {
+    animation: none !important;
+  }
+
+  .hero-chip,
+  .phone-task,
+  .phone-task i,
+  .phone-task svg {
+    transition: none !important;
+  }
+}

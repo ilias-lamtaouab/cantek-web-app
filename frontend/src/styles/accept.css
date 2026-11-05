@@ -1,0 +1,143 @@
+/* ==========================================================================
+   Accept a quote online (/accept-quote): summary, accepted and error states
+   ========================================================================== */
+
+.accept-page {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 40px 16px 70px;
+  overflow-x: clip;
+  background:
+    radial-gradient(560px 460px at 10% 60%, rgba(124, 58, 237, calc(0.16 * var(--glow-boost))), transparent 70%),
+    radial-gradient(560px 460px at 92% 75%, rgba(233, 71, 154, calc(0.14 * var(--glow-boost))), transparent 70%);
+}
+
+.accept-page > .logo-tile {
+  margin-bottom: 18px;
+}
+
+.accept-headline {
+  max-width: 900px;
+  text-align: center;
+  font-size: clamp(40px, 7vw, 76px);
+  letter-spacing: -0.05em;
+  line-height: 1;
+  text-wrap: balance;
+}
+
+.accept-number {
+  margin-bottom: 12px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+}
+
+.accept-card {
+  width: 600px;
+  margin: 0;
+  text-align: left;
+}
+
+.accept-intro {
+  margin-bottom: 14px;
+  color: var(--muted);
+}
+
+.accept-task-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.accept-task {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 13px 0;
+  border-top: 1.5px solid var(--line);
+}
+
+.accept-task:last-child {
+  border-bottom: 1.5px solid var(--line);
+}
+
+/* Ticked box, like the quote checklist */
+.accept-check {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  background: var(--violet);
+}
+
+.accept-check svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: var(--white);
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.accept-task-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.accept-task-text strong {
+  font-weight: 600;
+}
+
+.accept-task-text p {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.accept-totals {
+  margin-top: 18px;
+}
+
+.accept-totals small {
+  margin-bottom: 2px;
+}
+
+.accept-note {
+  margin: 18px 0 14px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+/* Accepted, already accepted, invalid and expired states */
+.accept-state {
+  margin: 10px 0 0;
+}
+
+.accept-state h2 {
+  margin-bottom: 12px;
+}
+
+.accept-state strong {
+  font-weight: 500;
+}
+
+@media (max-width: 520px) {
+  .accept-card {
+    padding: 22px 18px;
+  }
+
+  .accept-totals {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

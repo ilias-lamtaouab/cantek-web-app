@@ -1,0 +1,351 @@
+/* ==========================================================================
+   Shop: section titles, service cards, "How it works" timeline, About
+   ========================================================================== */
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(36px, 5.5vw, 64px);
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.status-text {
+  margin: 40px 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Services ---------- */
+.services-section {
+  padding-top: 80px;
+  scroll-margin-top: 20px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+  align-items: stretch;
+  margin-top: 90px;
+}
+
+.product-grid > .reveal {
+  display: flex;
+}
+
+.product-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lift);
+}
+
+/* The quote-only service: middle, slightly bigger, violet border and tint */
+.product-grid > .reveal:has(.product-card.featured) {
+  margin-top: -50px;
+}
+
+.product-card.featured {
+  border: 2px solid var(--violet);
+  background: var(--tint);
+  box-shadow: 0 24px 60px rgba(124, 58, 237, 0.18);
+}
+
+.service-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 40px;
+  border-radius: 16px;
+  background: var(--grad);
+  color: var(--white);
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .service-chip {
+  transform: rotate(-6deg) scale(1.06);
+}
+
+.product-card h3 {
+  margin-bottom: 12px;
+  font-size: clamp(24px, 2.3vw, 30px);
+  letter-spacing: -0.035em;
+}
+
+.product-card.featured h3 {
+  font-size: clamp(26px, 2.5vw, 32px);
+}
+
+.product-desc {
+  flex-grow: 1;
+  margin-bottom: 30px;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.product-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.price-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+}
+
+.new-price {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(22px, 2.1vw, 28px);
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+.old-price {
+  color: var(--muted);
+  text-decoration: line-through;
+  font-size: 0.95rem;
+}
+
+.discount-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--grad);
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.order-btn {
+  flex-shrink: 0;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+@media (max-width: 960px) {
+  .product-grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 560px;
+    margin-inline: auto;
+    margin-top: 40px;
+  }
+
+  .product-grid > .reveal:has(.product-card.featured) {
+    margin-top: 0;
+  }
+}
+
+/* ---------- How it works: horizontal timeline ---------- */
+.how-section {
+  padding-top: 120px;
+  scroll-margin-top: 20px;
+}
+
+.how-sub {
+  max-width: 560px;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+.how-timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
+  margin: 56px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Gradient line joining the four dots */
+.how-timeline::before {
+  content: "";
+  position: absolute;
+  top: 21px;
+  left: 22px;
+  right: calc(25% - 43px);
+  height: 3px;
+  border-radius: 3px;
+  background: var(--grad);
+}
+
+.how-step {
+  position: relative;
+}
+
+.how-dot {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 22px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 3px solid var(--violet);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--accent-text);
+  box-shadow: 0 0 0 6px var(--bg);
+}
+
+.how-step:last-child .how-dot {
+  border-color: var(--pink);
+  color: var(--pink);
+}
+
+.how-step h3 {
+  margin-bottom: 8px;
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+}
+
+.how-step p {
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+@media (max-width: 860px) {
+  .how-timeline {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 26px;
+  }
+
+  .how-timeline::before {
+    top: 22px;
+    bottom: 22px;
+    left: 20px;
+    right: auto;
+    width: 3px;
+    height: auto;
+  }
+
+  .how-step {
+    padding-left: 66px;
+  }
+
+  .how-dot {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+  }
+}
+
+/* ---------- About ---------- */
+.about-section {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  padding-top: 120px;
+}
+
+.about-text > p {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.65;
+}
+
+.about-points {
+  display: grid;
+  gap: 12px;
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-points li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+}
+
+.about-points li::before {
+  content: "";
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--grad);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.stat {
+  padding: 26px 18px;
+  background: var(--field);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.stat h3 {
+  font-size: clamp(32px, 4vw, 46px);
+  letter-spacing: -0.04em;
+}
+
+.stat p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 860px) {
+  .about-section {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

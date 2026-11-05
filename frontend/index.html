@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Cantek designs custom web, mobile, and AI solutions, private, modular, and built around you."
+    />
+    <title>Cantek — Software and AI</title>
+    <script>
+      // Night mode only when the visitor chose it with the toggle; light by default, never from the OS setting.
+      try {
+        if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      } catch (e) {
+        // Storage blocked: stay in light mode.
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

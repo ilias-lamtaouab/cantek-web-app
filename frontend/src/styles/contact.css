@@ -1,0 +1,206 @@
+/* ==========================================================================
+   Contact section ("Let's talk") and footer
+   ========================================================================== */
+
+.contact-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 34px;
+  margin-top: 120px;
+  padding: 40px 16px 110px;
+  overflow-x: clip;
+  scroll-margin-top: 20px;
+}
+
+/* Soft glows behind the card, like the hero */
+.contact-section::before,
+.contact-section::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 140px;
+  width: 560px;
+  height: 520px;
+  border-radius: 50%;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.contact-section::before {
+  left: calc(50% - 760px);
+  background: radial-gradient(circle, var(--violet), rgba(124, 58, 237, 0) 68%);
+  opacity: calc(0.3 * var(--glow-boost));
+}
+
+.contact-section::after {
+  right: calc(50% - 760px);
+  background: radial-gradient(circle, var(--pink), rgba(233, 71, 154, 0) 68%);
+  opacity: calc(0.26 * var(--glow-boost));
+}
+
+.contact-left {
+  max-width: 640px;
+  text-align: center;
+}
+
+.contact-left .section-title {
+  font-size: clamp(46px, 8vw, 96px);
+  letter-spacing: -0.05em;
+}
+
+.contact-sub {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: clamp(16px, 1.8vw, 20px);
+}
+
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px 8px 8px;
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  text-align: left;
+}
+
+.contact-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--grad);
+  color: var(--white);
+}
+
+.contact-item-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.contact-item small {
+  display: block;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.contact-item span {
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.contact-card {
+  width: 100%;
+  max-width: 560px;
+  padding: 26px;
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: 28px;
+  box-shadow: var(--shadow-soft);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 13px 16px;
+  background: var(--field);
+  border: 1.5px solid var(--line-strong);
+  border-radius: 16px;
+  font-size: 0.98rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--muted-light);
+}
+
+.contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contact-success,
+.contact-error {
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.contact-success {
+  color: var(--success);
+}
+
+.contact-error {
+  color: var(--error);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  margin-top: auto;
+  border-top: 1.5px solid var(--line);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-block: 26px 30px;
+}
+
+.site-footer h3 {
+  font-size: 1.4rem;
+  letter-spacing: -0.03em;
+}
+
+.site-footer p {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.footer-contact {
+  text-align: right;
+}
+
+.footer-contact p {
+  font-size: 0.82rem;
+}
+
+@media (max-width: 600px) {
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-contact {
+    text-align: center;
+  }
+
+  .contact-card {
+    padding: 20px;
+  }
+}
